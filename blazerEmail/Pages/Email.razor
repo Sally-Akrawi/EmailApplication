@@ -1,0 +1,44 @@
+﻿@page "/form"
+@inject IEmailClass SendingEmail
+@inject ISnackbar Snackbar
+
+<MudText Typo="Typo.h4" Align="Align.Center" Class="mt-5"> Text Email Page</MudText>
+
+<MudGrid Class="d-flex justify-center flex-grow-1 gap-4">
+	<MudItem xs="12" sm="12" md="12" lg="12">
+		<MudTextField @bind-Value="mod.ReceiversAddress" Label="TO" Variant="Variant.Outlined" Class="mt-10"></MudTextField>
+
+	</MudItem>
+
+	<MudItem xs="12" sm="12" md="12" lg="12">
+		<MudTextField @bind-Value="mod.subject" Label="Subject" Variant="Variant.Outlined"></MudTextField>
+
+	</MudItem>
+
+	<MudItem xs="12" sm="12" md="12" lg="12">
+		<MudTextField T="string" @bind-Value="mod.body" Label="Message" Variant="Variant.Outlined" Lines="10" />
+	</MudItem>
+
+	<MudItem xs="12" sm="12" md="12" lg="12" Class="d-flex justify-center mb-15">
+		<MudButton Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Send" Color="Color.Primary" OnClick="Send">Send</MudButton>
+	</MudItem>
+</MudGrid>
+
+
+ 
+@code {
+
+	EmailModel mod = new EmailModel();
+
+	public void Send()
+	{
+		SendingEmail.SendEmail(mod);
+		mod = new();
+	}
+
+}
+
+
+
+
+

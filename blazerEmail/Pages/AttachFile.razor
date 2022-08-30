@@ -1,0 +1,70 @@
+﻿@page "/AttachFile"
+@inject IEmailClass SendingEmail
+@inject ISnackbar Snackbar
+
+<MudText Typo="Typo.h4" Align="Align.Center" Class="mt-5"> Attach File Email Page</MudText>
+
+<MudGrid Class="d-flex justify-center flex-grow-1 gap-4">
+	<MudItem xs="12" sm="12" md="12" lg="12" Class="d-flex justify-center">
+		<MudTextField @bind-Value="mod.ReceiversAddress" Label="TO" Variant="Variant.Outlined" Class="mt-10"></MudTextField>
+
+	</MudItem>
+
+
+
+	<MudItem xs="12" sm="12" md="12" lg="12" Class="d-flex justify-center">
+		<MudTextField @bind-Value="mod.subject" Label="Subject" Variant="Variant.Outlined"></MudTextField>
+
+	</MudItem>
+
+	<MudItem xs="12" sm="12" md="12" lg="12" Class="d-flex justify-center">
+		<MudTextField T="string" @bind-Value="mod.body" Label="Message" Variant="Variant.Outlined" Lines="10" />
+	</MudItem>
+
+
+	<MudItem xs="12" sm="12" md="12" lg="12" Class="d-flex justify-center mb-15">
+		<MudButton Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Send" Color="Color.Primary" OnClick="Attachment">Attachment</MudButton>
+	</MudItem>
+</MudGrid>
+
+
+
+
+@code {
+
+  
+
+	string[] flowers = Directory.GetFiles("wwwroot\\sss");
+	List<string> test = new();
+	EmailModel mod = new EmailModel();
+	//images array to use it in the remove method to display just sss from the path
+	string[] path = Directory.GetFiles("wwwroot\\sss");
+
+
+	protected override void OnInitialized()
+	{
+		Remove();
+	}
+
+
+	public void Attachment()
+	{
+		SendingEmail.AtachFile(mod);
+		mod = new();
+
+
+	}
+
+	public void Remove()
+	{
+		foreach (var item in path)
+		{
+			var y = item.Remove(0, 8);
+			test.Add(y);
+		}
+	}
+
+
+
+
+}

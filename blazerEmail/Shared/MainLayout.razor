@@ -1,0 +1,68 @@
+﻿@inherits LayoutComponentBase
+<MudThemeProvider/>
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+	<MudHidden Breakpoint="Breakpoint.Xs" Invert="true">
+		<MudAppBar Bottom="true" Class="px-2">
+			<MudContainer Class="d-flex justify-space-around">
+				<MudTooltip Text="Home"> <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Filled.Home" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+				<MudTooltip Text="Email"> <MudNavLink Href="/form" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.Email" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+				<MudTooltip Text="Attach File"> <MudNavLink Href="/AttachFile" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.AttachEmail" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+				<MudTooltip Text="Send Image"> <MudNavLink Href="/SendImage" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.Image" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+				<MudTooltip Text="Upload File"> <MudNavLink Href=" /UploadFile" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.UploadFile" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+			</MudContainer>
+		</MudAppBar>
+	</MudHidden>
+
+	<MudHidden Breakpoint="Breakpoint.Sm" Invert="true">
+		<MudAppBar Bottom="true" Class="px-2">
+			<MudContainer Class="d-flex justify-space-around">
+			<MudTooltip Text="Home"> <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Filled.Home" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+			<MudTooltip Text="Email"> <MudNavLink Href="/form" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.Email" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+			<MudTooltip Text="Attach File"> <MudNavLink Href="/AttachFile" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.AttachEmail" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+			<MudTooltip Text="Send Image"> <MudNavLink Href="/SendImage" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.Image" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+			<MudTooltip Text="Upload File"> <MudNavLink Href=" /UploadFile" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.UploadFile" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+		</MudContainer>
+		</MudAppBar>
+
+	</MudHidden>
+
+	<MudHidden Breakpoint="Breakpoint.Md" Invert="true">
+		<MudAppBar Class="px-2">
+			<MudContainer Class="d-flex justify-space-around">
+			<MudTooltip Text="Home"> <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Filled.Home" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+			<MudTooltip Text="Email"> <MudNavLink Href="/form" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.Email" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+			<MudTooltip Text="Attach File"> <MudNavLink Href="/AttachFile" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.AttachEmail" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+			<MudTooltip Text="Send Image"> <MudNavLink Href="/SendImage" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.Image" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+			<MudTooltip Text="Upload File"> <MudNavLink Href=" /UploadFile" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.UploadFile" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+		</MudContainer>
+		</MudAppBar>
+	</MudHidden>
+
+	<MudHidden Breakpoint="Breakpoint.Lg" Invert="true">
+		<MudAppBar Class="px-2">
+			<MudContainer Class="d-flex justify-space-around">
+			<MudTooltip Text="Home"> <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Filled.Home" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+			<MudTooltip Text="Email">   <MudNavLink Href="/form" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.Email" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+			<MudTooltip Text="Attach File"> <MudNavLink Href="/AttachFile" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.AttachEmail" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+			<MudTooltip Text="Send Image"> <MudNavLink Href="/SendImage" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.Image" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+			<MudTooltip Text="Upload File"> <MudNavLink Href=" /UploadFile" Match="NavLinkMatch.Prefix" Icon="@Icons.Filled.UploadFile" IconColor="Color.Surface"></MudNavLink></MudTooltip>
+		</MudContainer>
+		</MudAppBar>
+	</MudHidden>
+
+	<MudMainContent>
+		<MudContainer MaxWidth="MaxWidth.Medium" Class="pb-xs-16">
+
+			@Body
+
+		</MudContainer>
+	</MudMainContent>
+</MudLayout>
+
+
+@code {
+
+}

@@ -1,0 +1,86 @@
+﻿@page "/SendImage"
+@inject IEmailClass SendingEmail
+@inject ISnackbar Snackbar
+
+
+<MudContainer Class="mb-10 pb-5">
+	<MudText Typo="Typo.h4" Align="Align.Center" Class="mt-5"> Attach Image Email Page</MudText>
+	<MudGrid Class="d-flex justify-center flex-grow-1 gap-4">
+		<MudItem xs="12" sm="12" md="12" lg="12">
+			<MudTextField @bind-Value="mod.ReceiversAddress" Label="TO" Variant="Variant.Outlined" Class="mt-10"></MudTextField>
+
+		</MudItem>
+
+		<MudItem lg="12" xs="12" sm="12" md="12">
+			<MudTextField @bind-Value="mod.subject" Label="Subject" Variant="Variant.Outlined"></MudTextField>
+
+		</MudItem>
+
+
+		<MudItem lg="12" xs="12" sm="12" md="12">
+			<MudTextField T="string" @bind-Value="mod.body" Label="Message" Variant="Variant.Outlined" Lines="10" Class="mb-10" />
+		</MudItem>
+
+		<MudItem lg="12" xs="12" sm="12" md="12">
+
+			@foreach (var item in test)
+			{
+
+				<a @onclick="() => SelectImage(item)">
+					<MudImage Src="@item" Width="100" Height="100" Alt="flowers" Elevation="25" Class=" ml-5 mr-5 mt-5 mb-3" />
+				</a>
+
+			}
+
+		</MudItem>
+
+		<MudItem lg="12" xs="12" sm="12" md="12" Class="d-flex justify-center mb-15">
+			<MudButton Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Send" Color="Color.Primary" OnClick="SendAttachImage">Attach Photo</MudButton>
+		</MudItem>
+	</MudGrid>
+</MudContainer>
+
+
+@code {
+	List<string> test = new();
+	EmailModel mod = new EmailModel();
+	string[] flowers = Directory.GetFiles("wwwroot\\sss");
+	//images array to display just sss from the path
+	string[] path = Directory.GetFiles("wwwroot\\sss");
+	List<string> PathName = new();
+
+	protected override void OnInitialized()
+	{
+		Remove();
+	}
+
+	public void Remove()
+	{
+		foreach (var item in path)
+		{
+			var y = item.Remove(0, 8);
+			test.Add(y);
+		}
+	}
+
+
+	//select image
+	public void SelectImage(string imgPath)
+	{
+		PathName.Add(imgPath);
+		var pic = imgPath.Remove(0, 4);
+		Snackbar.Add($"The {pic} is added to the attachment");
+	}
+
+	public void SendAttachImage()
+	{
+		SendingEmail.AttachPath(mod, PathName);
+		//clear the email,subject,and body after the message send
+		mod = new();
+	}
+
+
+
+}
+
+
